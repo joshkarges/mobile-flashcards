@@ -1,5 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TabNavigator, StackNavigator } from 'react-navigator';
+
+const DeckTabs = TabNavigator.create({
+  DeckListView: {
+    screen: DeckListView
+  },
+  NewDeckView: {
+    screen: NewDeckView
+  }
+});
+
+const MainNavigator = StackNavigator.create({
+  DeckView: {
+    screen: DeckTabs
+  },
+  IndividualDeckView: {
+    screen: IndividualDeckView
+  },
+  QuizView: {
+    screen: QuizView
+  },
+  NewQuestionView: {
+    screen: NewQuestionView
+  }
+});
 
 export default class App extends React.Component {
   render() {
