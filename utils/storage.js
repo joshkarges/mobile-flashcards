@@ -31,11 +31,11 @@ export function addDeck(title) {
 
 // take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
 export function addCardToDeck(title, card) {
-  return AsyncStorage.getItem(MOBILE_FLASHCARDS_STORAGE_KEY, ({ result })=>{
+  return AsyncStorage.getItem(MOBILE_FLASHCARDS_STORAGE_KEY, ({ result }) => {
     return AsyncStorage.mergeItem(MOBILE_FLASHCARDS_STORAGE_KEY, JSON.stringify({
       [title]: {
         ...result[title],
-        questions: result[title].questions.concat(card);
+        questions: result[title].questions.concat(card)
       }
     }));
   })
