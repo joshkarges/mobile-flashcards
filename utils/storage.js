@@ -4,7 +4,7 @@ const MOBILE_FLASHCARDS_STORAGE_KEY = 'MobileFlashcards:storage';
 
 // return all of the decks along with their titles, questions, and answers.
 export function getDecks() {
-  return AsyncStorage.getItem(MOBILE_FLASHCARDS_STORAGE_KEY, ({ result }) => {
+  return AsyncStorage.getItem(MOBILE_FLASHCARDS_STORAGE_KEY, (result) => {
     if (result === null) {
       result =  {};
       return AsyncStorage.setItem(MOBILE_FLASHCARDS_STORAGE_KEY, JSON.stringify(result), ()=>result);
