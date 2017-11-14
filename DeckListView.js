@@ -6,19 +6,13 @@ import { AppLoading} from 'expo'
 import { getAllDecks } from './actions';
 
 class DeckListView extends React.Component {
-  state = {
-    decks: {}
-  }
   componentDidMount() {
-    this.props.dispatch(getAllDecks())
+    this.props.getAllDecks()
   }
   render() {
     if (this.props.isLoading) return <AppLoading/>;
     return (
-      <View>
-        <Text>DeckListView</Text>
-        <Text>DeckListView</Text>
-        <Text>DeckListView</Text>
+      <View style={{flex: 1}}>
         <Text>DeckListView</Text>
         {_.map(this.props.decks, (deck, key) => (
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('IndividualDeckView', {deckId: key})} key={key}>
@@ -35,4 +29,10 @@ const mapStateToProps = (state, props) => {
   return {...state};
 };
 
-export default connect(mapStateToProps)(DeckListView);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllDecks: () => dispatch(getAllDecks())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckListView);
