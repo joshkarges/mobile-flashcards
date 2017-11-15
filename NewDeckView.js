@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { addDeck } from './actions';
 
-const _console = console;
-
 class NewDeckView extends React.Component {
   state = {
     deckTitleText: 'Deck Title'
@@ -12,8 +10,8 @@ class NewDeckView extends React.Component {
   addDeckHandler = (evt) => {
     let str = this.state.deckTitleText;
     if (!str) return;
-    this.props.addDeck(str)
-    .then(() => this.props.navigation.navigate('DeckListView'))
+    this.props.navigation.navigate('DeckListView');
+    this.props.addDeck(str);
   }
   getTextInput = () => (
     <TextInput style={{

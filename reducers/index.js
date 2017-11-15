@@ -2,11 +2,17 @@ import { combineReducers } from 'redux';
 import { getAttemptingReducer, getFailureReducer } from './util';
 import {
   GET_ALL_DECKS,
-  SUCCESS_GET_ALL_DECKS
+  SUCCESS_GET_ALL_DECKS,
+  ADD_DECK,
+  SUCCESS_ADD_DECK
 } from '../actions';
 
 const reducerMap = {
-  [SUCCESS_GET_ALL_DECKS]: (state, data) => data
+  [SUCCESS_GET_ALL_DECKS]: (state, data) => data,
+  [SUCCESS_ADD_DECK]: (state, data) => ({
+      ...state,
+      ...data
+    })
 };
 
 function decks(state={}, { type, data }) {

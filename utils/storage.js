@@ -4,14 +4,11 @@ const MOBILE_FLASHCARDS_STORAGE_KEY = 'MobileFlashcards:storage';
 
 // return all of the decks along with their titles, questions, and answers.
 export function getDecks() {
-  console.log('getting all decks');
   return AsyncStorage.getItem(MOBILE_FLASHCARDS_STORAGE_KEY, (result) => {
     if (result === null) {
       result =  {};
-      console.log('initializing deck storage as ', result);
       return AsyncStorage.setItem(MOBILE_FLASHCARDS_STORAGE_KEY, JSON.stringify(result), ()=>result);
     }
-    console.log('getting all decks response ', result);
     return result;
   });
 }
@@ -24,13 +21,14 @@ export function getDeck(id) {
 
 // take in a single title argument and add it to the decks.
 export function addDeck(title) {
-  console.log('adding deck ', title);
-  return AsyncStorage.mergeItem(MOBILE_FLASHCARDS_STORAGE_KEY, JSON.stringify({
+  const newDeckString = JSON.stringify({
     [title]: {
       title,
       questions: []
     }
-  }), ()=>console.log('hopefully a successful deck addition'));
+  });
+  return AsyncStorage.mergeItem(MOBILE_FLASHCARDS_STORAGE_KEY, newDeckString)
+    .then(()=>newDeckString);
 }
 
 // take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
