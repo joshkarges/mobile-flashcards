@@ -26,6 +26,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around'
   },
+  individualDeckContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  individualDeckSection: {
+    alignItems: 'center',
+  },
+  individualDeckButton: {
+    padding: 5,
+    margin: 10,
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'black',
+    // backgroundColor: 'white'
+  },
+  individualDeckStartQuizButton: {
+    backgroundColor: 'black'
+  },
+  individualDeckStartQuizButtonText: {
+    color: 'white',
+  },
+  individualDeckButtonText: {
+    fontSize: 20
+  },
   header: {
   },
   headerBack: {

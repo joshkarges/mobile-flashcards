@@ -11,17 +11,17 @@ class IndividualDeckView extends React.Component {
   }
   render() {
     return (
-      <View style={[styles.container, styles.deckContainer]}>
-        <View>
+      <View style={[styles.container, styles.individualDeckContainer]}>
+        <View style={styles.individualDeckSection}>
           <Text style={styles.deckTitle}>{this.props.title}</Text>
           <Text>{`${this.props.questions.length} cards`}</Text>
         </View>
-        <View>
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewQuestionView', { deckId: this.props.title })}>
-            <Text>Add Card</Text>
+        <View style={styles.individualDeckSection}>
+          <TouchableOpacity style={styles.individualDeckButton} onPress={()=>this.props.navigation.navigate('NewQuestionView', { deckId: this.props.title })}>
+            <Text style={styles.individualDeckButtonText}>Add Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('QuizView', { deckId: this.props.title })}>
-            <Text>Start Quiz</Text>
+          <TouchableOpacity style={[styles.individualDeckButton, styles.individualDeckStartQuizButton]} onPress={()=>this.props.navigation.navigate('QuizView', { deckId: this.props.title })}>
+            <Text style={[styles.individualDeckButtonText, styles.individualDeckStartQuizButtonText]}>Start Quiz</Text>
           </TouchableOpacity>
         </View>
       </View>
