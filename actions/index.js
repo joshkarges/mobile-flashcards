@@ -16,3 +16,11 @@ export const {
   FAILURE_ADD_DECK,
   addDeck
 } = getAsyncActionCreators(ADD_DECK, storage.addDeck)
+
+export const ADD_CARD = 'ADD_CARD';
+export const {
+  ATTEMPTING_ADD_CARD,
+  SUCCESS_ADD_CARD,
+  FAILURE_ADD_CARD,
+  addCard
+} = getAsyncActionCreators(ADD_CARD, storage.addCardToDeck)

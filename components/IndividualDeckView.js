@@ -1,20 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text, View, TouchableOpacity } from 'react-native';
+import styles from '../utils/styles';
 
 class IndividualDeckView extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <View>
           <Text>{this.props.title}</Text>
-          <Text>{`${deck.questions.length} cards`}</Text>
+          <Text>{`${this.props.questions.length} cards`}</Text>
         </View>
         <View>
-          <TouchableOpacity onPress={this.props.navigation.navigate('NewQuestionView')}>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewQuestionView', {deckId: this.props.title})}>
             <Text>Add Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.props.navigation.navigate('QuizView')}>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('QuizView')}>
             <Text>Start Quiz</Text>
           </TouchableOpacity>
         </View>
@@ -25,8 +26,9 @@ class IndividualDeckView extends React.Component {
 
 const mapStateToProps = (state, props) => {
   const { deckId } = props.navigation.state.params;
+  // console.log('remapping IndividualDeckView ', deckId, state.decks[deckId]);
   return {
-    ...state[deckId]
+    ...state.decks[deckId]
   };
 };
 

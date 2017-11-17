@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { addDeck } from './actions';
+import { addDeck } from '../actions';
+import styles from '../utils/styles';
 
 class NewDeckView extends React.Component {
   state = {
-    deckTitleText: 'Deck Title'
+    deckTitleText: null
   }
   addDeckHandler = (evt) => {
     let str = this.state.deckTitleText;
@@ -14,12 +15,10 @@ class NewDeckView extends React.Component {
     this.props.addDeck(str);
   }
   getTextInput = () => (
-    <TextInput style={{
-      borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 5,
-      margin: 1
-    }} onChangeText={(evt)=>this.setState({ deckTitleText: evt })} value={this.state.deckTitleText}/>
+    <TextInput
+      style={styles.textInput}
+      onChangeText={(evt)=>this.setState({ deckTitleText: evt })}
+      value={this.state.deckTitleText} placeholder='Deck Title'/>
   )
   render() {
     return (
@@ -38,12 +37,13 @@ class NewDeckView extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
+  // console.log('remapping NewDeckView');
   return {...state};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addDeck: (title) => dispatch(addDeck(title))
+    addDeck: (title) => dispatch(addDeck({ title }))
   };
 }
 

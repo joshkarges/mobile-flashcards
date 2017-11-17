@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import { AppLoading} from 'expo'
-import { getAllDecks } from './actions';
+import { getAllDecks } from '../actions';
 
 class DeckListView extends React.Component {
   componentDidMount() {
@@ -26,6 +26,7 @@ class DeckListView extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
+  // console.log('remapping DeckListView ', state);
   return {...state};
 };
 

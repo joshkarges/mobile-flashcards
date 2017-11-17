@@ -14,13 +14,14 @@ export function getAsyncActionCreators(name, asyncFn) {
         dispatch(attempting.creator({ isAttempting: true }));
         return asyncFn(opts)
         .then((response) => {
+          // console.log('    ACTION - asyncFn response ', response)
           dispatch(attempting.creator({ isAttempting: false }));
           return response;
         })
         .then(response => JSON.parse(response))
         .then(data => dispatch(success.creator({ opts, data })))
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           return dispatch(failure.creator({ failure: true }));
         });
       }

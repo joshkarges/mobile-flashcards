@@ -5,11 +5,11 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import reducer from './reducers'
-import DeckListView from './DeckListView';
-import IndividualDeckView from './IndividualDeckView';
-import QuizView from './QuizView';
-import NewDeckView from './NewDeckView';
-import NewQuestionView from './NewQuestionView';
+import DeckListView from './components/DeckListView';
+import IndividualDeckView from './components/IndividualDeckView';
+import QuizView from './components/QuizView';
+import NewDeckView from './components/NewDeckView';
+import NewQuestionView from './components/NewQuestionView';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Constants } from 'expo';
 
@@ -36,7 +36,8 @@ const MainNavigator = StackNavigator({
     title: 'Decks'
   },
   IndividualDeckView: {
-    screen: IndividualDeckView
+    screen: IndividualDeckView,
+    title: 'Individual Deck'
   },
   QuizView: {
     screen: QuizView
@@ -54,7 +55,7 @@ export default class App extends React.Component {
           <View style={{ backgroundColor: 'purple', height: Constants.statusBarHeight }}>
             <StatusBar translucent backgroundColor={'purple'} />
           </View>
-          <DeckTabs />
+          <MainNavigator />
         </View>
       </Provider>
     );
