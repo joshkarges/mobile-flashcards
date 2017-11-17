@@ -11,9 +11,9 @@ class IndividualDeckView extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, styles.deckContainer]}>
         <View>
-          <Text>{this.props.title}</Text>
+          <Text style={styles.deckTitle}>{this.props.title}</Text>
           <Text>{`${this.props.questions.length} cards`}</Text>
         </View>
         <View>

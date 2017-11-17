@@ -55,7 +55,9 @@ const MainNavigator = StackNavigator({
 },
 {
   navigationOptions: {
-
+    headerStyle: styles.header,
+    headerBackTitleStyle: styles.headerBack,
+    headerTitleStyle: styles.headerBack,
   }
 });
 

@@ -18,7 +18,18 @@ const styles = StyleSheet.create({
   },
   deckListElementTitle: {
     fontSize: 36
-  }
+  },
+  deckTitle: {
+    fontSize: 36
+  },
+  deckContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  header: {
+  },
+  headerBack: {
+  },
 });
 
 export default styles;
