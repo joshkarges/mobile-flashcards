@@ -24,3 +24,11 @@ export const {
   FAILURE_ADD_CARD,
   addCard
 } = getAsyncActionCreators(ADD_CARD, storage.addCardToDeck)
+
+export const REMOVE_ALL_DECKS = 'REMOVE_ALL_DECKS';
+export const {
+  ATTEMPTING_REMOVE_ALL_DECKS,
+  SUCCESS_REMOVE_ALL_DECKS,
+  FAILURE_REMOVE_ALL_DECKS,
+  removeAllDecks
+} = getAsyncActionCreators(REMOVE_ALL_DECKS, storage.removeAllDecks)

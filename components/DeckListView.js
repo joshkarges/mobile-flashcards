@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import { AppLoading} from 'expo'
-import { getAllDecks } from '../actions';
+import { getAllDecks, removeAllDecks } from '../actions';
 
 class DeckListView extends React.Component {
   componentDidMount() {
@@ -13,7 +13,9 @@ class DeckListView extends React.Component {
     if (this.props.isLoading) return <AppLoading/>;
     return (
       <View style={{flex: 1}}>
-        <Text>DeckListView</Text>
+        <TouchableOpacity onPress={this.props.removeAllDecks}>
+          <Text>DeckListView</Text>
+        </TouchableOpacity>
         {_.map(this.props.decks, (deck, key) => (
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('IndividualDeckView', {deckId: key})} key={key}>
             <Text>{deck.title}</Text>
@@ -32,7 +34,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllDecks: () => dispatch(getAllDecks())
+    getAllDecks: () => dispatch(getAllDecks()),
+    removeAllDecks: () => dispatch(removeAllDecks())
   };
 }
 

@@ -15,7 +15,7 @@ class NewQuestionView extends React.Component {
       question: this.state.questionText,
       answer: this.state.answerText
     }
-    this.props.navigation.navigate('IndividualDeckView', { deckId: this.props.deckId });
+    this.props.navigation.goBack();
     this.props.addCard(newCard);
   }
   render() {

@@ -6,7 +6,9 @@ import {
   ADD_DECK,
   SUCCESS_ADD_DECK,
   ADD_CARD,
-  SUCCESS_ADD_CARD
+  SUCCESS_ADD_CARD,
+  REMOVE_ALL_DECKS,
+  SUCCESS_REMOVE_ALL_DECKS
 } from '../actions';
 
 const reducerMap = {
@@ -21,7 +23,8 @@ const reducerMap = {
       ...state,
       ...data
     };
-  }
+  },
+  [SUCCESS_REMOVE_ALL_DECKS]: (state, data) => data
 };
 
 function decks(state={}, { type, data }) {

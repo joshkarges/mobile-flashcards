@@ -5,13 +5,7 @@ const MOBILE_FLASHCARDS_STORAGE_KEY = 'MobileFlashcards:storage';
 // return all of the decks along with their titles, questions, and answers.
 export function getDecks() {
   return AsyncStorage.getItem(MOBILE_FLASHCARDS_STORAGE_KEY, (err, result) => {
-    // console.log('  STORAGE - get decks ', err, result);
-    if (result === null) {
-      result =  {};
-      // console.log('  STORAGE - get decks - initialized Decks to ', result);
-      return AsyncStorage.setItem(MOBILE_FLASHCARDS_STORAGE_KEY, JSON.stringify(result))
-        // .then(()=>result);
-    }
+    if (result === null) return AsyncStorage.setItem(MOBILE_FLASHCARDS_STORAGE_KEY, JSON.stringify({}))
   });
 }
 
@@ -50,4 +44,9 @@ export function addCardToDeck({ title, card }) {
       return AsyncStorage.mergeItem(MOBILE_FLASHCARDS_STORAGE_KEY, newCardString)
         .then(()=>newCardString);
   });
+}
+
+export function removeAllDecks() {
+  return AsyncStorage.removeItem(MOBILE_FLASHCARDS_STORAGE_KEY)
+    .then(()=>getDecks());
 }

@@ -12,10 +12,10 @@ class IndividualDeckView extends React.Component {
           <Text>{`${this.props.questions.length} cards`}</Text>
         </View>
         <View>
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewQuestionView', {deckId: this.props.title})}>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewQuestionView', { deckId: this.props.title })}>
             <Text>Add Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('QuizView')}>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('QuizView', { deckId: this.props.title })}>
             <Text>Start Quiz</Text>
           </TouchableOpacity>
         </View>
