@@ -9,6 +9,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     margin: 1
+  },
+  deckListElement: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    height: 150
+  },
+  deckListElementTitle: {
+    fontSize: 36
   }
 });
 

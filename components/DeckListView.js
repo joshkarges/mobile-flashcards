@@ -4,6 +4,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import { AppLoading} from 'expo'
 import { getAllDecks, removeAllDecks } from '../actions';
+import styles from '../utils/styles';
 
 class DeckListView extends React.Component {
   componentDidMount() {
@@ -12,13 +13,10 @@ class DeckListView extends React.Component {
   render() {
     if (this.props.isLoading) return <AppLoading/>;
     return (
-      <View style={{flex: 1}}>
-        <TouchableOpacity onPress={this.props.removeAllDecks}>
-          <Text>DeckListView</Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
         {_.map(this.props.decks, (deck, key) => (
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('IndividualDeckView', {deckId: key})} key={key}>
-            <Text>{deck.title}</Text>
+          <TouchableOpacity style={styles.deckListElement} onPress={()=>this.props.navigation.navigate('IndividualDeckView', {deckId: key})} key={key}>
+            <Text style={styles.deckListElementTitle}>{deck.title}</Text>
             <Text>{`${deck.questions.length} cards`}</Text>
           </TouchableOpacity>
         ))}

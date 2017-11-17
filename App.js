@@ -1,17 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Text, View } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { Constants } from 'expo';
 import reducer from './reducers'
 import DeckListView from './components/DeckListView';
 import IndividualDeckView from './components/IndividualDeckView';
 import QuizView from './components/QuizView';
 import NewDeckView from './components/NewDeckView';
 import NewQuestionView from './components/NewQuestionView';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { Constants } from 'expo';
+import styles from './utils/styles';
 
 const DeckTabs = TabNavigator({
   DeckListView: {
@@ -28,22 +29,33 @@ const DeckTabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <MaterialIcons name='add-box' size={30} color={tintColor} />
     }
   }
+},
+{
+  navigationOptions: {
+    header: null
+  }
 });
 
 const MainNavigator = StackNavigator({
   DeckTabs: {
     screen: DeckTabs,
-    title: 'Decks'
+    title: 'Decks',
   },
   IndividualDeckView: {
-    screen: IndividualDeckView,
-    title: 'Individual Deck'
+    screen: IndividualDeckView
   },
   QuizView: {
-    screen: QuizView
+    screen: QuizView,
+    title: 'Quiz'
   },
   NewQuestionView: {
-    screen: NewQuestionView
+    screen: NewQuestionView,
+    title: 'Add New Card'
+  }
+},
+{
+  navigationOptions: {
+
   }
 });
 
@@ -52,18 +64,10 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer, applyMiddleware(thunk))}>
         <View style={styles.container}>
-          <View style={{ backgroundColor: 'purple', height: Constants.statusBarHeight }}>
-            <StatusBar translucent backgroundColor={'purple'} />
-          </View>
+          <View style={{ backgroundColor: 'lightblue', height: Constants.statusBarHeight }}></View>
           <MainNavigator />
         </View>
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

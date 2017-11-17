@@ -4,6 +4,11 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import styles from '../utils/styles';
 
 class IndividualDeckView extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.state.params.deckId
+    };
+  }
   render() {
     return (
       <View style={styles.container}>
