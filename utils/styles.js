@@ -4,11 +4,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  textInputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
   textInput: {
+    flex: 1,
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
-    margin: 1
+    padding: 2,
+    margin: 10
   },
   deckListElement: {
     alignItems: 'center',
@@ -39,7 +45,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'black',
-    // backgroundColor: 'white'
   },
   individualDeckStartQuizButton: {
     backgroundColor: 'black'
@@ -49,6 +54,30 @@ const styles = StyleSheet.create({
   },
   individualDeckButtonText: {
     fontSize: 20
+  },
+  newDeckContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  newDeckTitle: {
+    textAlign: 'center',
+    fontSize: 50,
+    marginHorizontal: 10,
+    marginVertical: 30
+  },
+  submitButton: {
+    padding: 5,
+    margin: 10,
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'black',
+    backgroundColor: 'black'
+  },
+  submitButtonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold'
   },
   header: {
   },
