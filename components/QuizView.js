@@ -16,10 +16,10 @@ class QuizView extends React.Component {
       const percentCorrect = Math.round(100 * numCorrect/questions.length);
       const punctuation = percentCorrect > 50 ? '!' : ' :\\';
       return (
-        <View>
-          <Text>{`You got ${percentCorrect}% correct${punctuation}`}</Text>
-          <TouchableOpacity onPress={()=>this.setState({ cardIdx: 0, flipped: false, numCorrect: 0 })}>
-            <Text>Restart Quiz</Text>
+        <View style={styles.QuizContent}>
+          <Text style={styles.QuizText}>{`You got ${percentCorrect}% correct${punctuation}`}</Text>
+          <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonRestart]} onPress={()=>this.setState({ cardIdx: 0, flipped: false, numCorrect: 0 })}>
+            <Text style={styles.QuizButtonText}>Restart Quiz</Text>
           </TouchableOpacity>
         </View>
       );

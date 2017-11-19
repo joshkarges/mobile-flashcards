@@ -20,7 +20,10 @@ class IndividualDeckView extends React.Component {
           <TouchableOpacity style={styles.individualDeckButton} onPress={()=>this.props.navigation.navigate('NewQuestionView', { deckId: this.props.title })}>
             <Text style={styles.individualDeckButtonText}>Add Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.individualDeckButton, styles.individualDeckStartQuizButton]} onPress={()=>this.props.navigation.navigate('QuizView', { deckId: this.props.title })}>
+          <TouchableOpacity
+            style={[styles.individualDeckButton, styles.individualDeckStartQuizButton, {backgroundColor: this.props.questions.length ? 'black' : 'lightgrey'}]}
+            onPress={()=>this.props.navigation.navigate('QuizView', { deckId: this.props.title })}
+            disabled={!this.props.questions.length}>
             <Text style={[styles.individualDeckButtonText, styles.individualDeckStartQuizButtonText]}>Start Quiz</Text>
           </TouchableOpacity>
         </View>

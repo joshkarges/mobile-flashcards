@@ -129,6 +129,9 @@ const styles = StyleSheet.create({
   QuizButtonIncorrect: {
     backgroundColor: 'red'
   },
+  QuizButtonRestart: {
+    backgroundColor: 'black'
+  },
   QuizButtonText: {
     color: 'white',
     fontSize: 24,
