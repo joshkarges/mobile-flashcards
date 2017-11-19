@@ -6,15 +6,17 @@ const styles = StyleSheet.create({
   },
   textInputContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  textInput: {
-    flex: 1,
+    justifyContent: 'space-around',
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
-    padding: 2,
+    padding: 3,
     margin: 10
+  },
+  textInput: {
+    flex: 1,
+    borderBottomWidth: 1,
+    fontSize: 20
   },
   deckListElement: {
     alignItems: 'center',
@@ -78,6 +80,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold'
+  },
+  newCardContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+  newCardText: {
+    fontSize: 30
   },
   header: {
   },

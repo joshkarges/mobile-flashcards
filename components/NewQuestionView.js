@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { addCard } from '../actions';
 import styles from '../utils/styles';
+import { TextLine } from './primitives';
 
 class NewQuestionView extends React.Component {
   state = {
@@ -20,18 +21,21 @@ class NewQuestionView extends React.Component {
   }
   render() {
     return (
-      <View>
-        <Text>NewQuestionView</Text>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={(text)=>this.setState({ questionText: text })}
-          value={this.state.questionText}/>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={(text)=>this.setState({ answerText: text })}
-          value={this.state.answerText}/>
-        <TouchableOpacity type='submit' onPress={this.addCardHandler}>
-          <Text>Submit</Text>
+      <View style={styles.newCardContainer}>
+        <Text style={styles.newCardText}>Add New Card</Text>
+        <TextLine
+          set={(text)=>this.setState({ questionText: text })}
+          get={()=>this.state.questionText}
+          placeholder='Question'
+          multiline={true}
+          numberOfLines={3}
+          autoFocus={true}/>
+        <TextLine
+          set={(text)=>this.setState({ answerText: text })}
+          get={()=>this.state.answerText}
+          placeholder='Answer'/>
+        <TouchableOpacity style={styles.submitButton} type='submit' onPress={this.addCardHandler}>
+          <Text style={styles.submitButtonText}>Submit</Text>
         </TouchableOpacity>
       </View>
     );

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { addDeck } from '../actions';
 import styles from '../utils/styles';
+import { TextLine } from './primitives';
 
 class NewDeckView extends React.Component {
   state = {
@@ -18,12 +19,11 @@ class NewDeckView extends React.Component {
     return (
       <View style={styles.newDeckContainer}>
         <Text style={styles.newDeckTitle}>{'What is the title of your new Deck?'}</Text>
-        <View style={styles.textInputContainer}>
-            <TextInput
-              style={styles.textInput}
-              onChangeText={(evt)=>this.setState({ deckTitleText: evt })}
-              value={this.state.deckTitleText} placeholder='Deck Title'/>
-        </View>
+        <TextLine
+          set={(text)=>this.setState({ deckTitleText: text })}
+          get={()=>this.state.deckTitleText}
+          placeholder='Deck Title'
+          autoFocus={true}/>
         <TouchableOpacity style={styles.submitButton} type='submit' onPress={this.addDeckHandler}>
           <Text style={styles.submitButtonText}>Submit</Text>
         </TouchableOpacity>
