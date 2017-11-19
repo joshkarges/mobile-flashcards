@@ -26,19 +26,23 @@ class QuizView extends React.Component {
     }
     const card = questions[cardIdx];
     return (
-      <View style={styles.container}>
-        <Text>{`${cardIdx + 1}/${questions.length}`}</Text>
-        <View>
-          <Text>{flipped ? card.answer : card.question}</Text>
-          <TouchableOpacity onPress={()=>this.setState({ flipped: !flipped })}>
-            <Text>{flipped ? 'Question' : 'Answer'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.setState({ numCorrect: numCorrect + 1, cardIdx: cardIdx + 1, flipped: false })}>
-            <Text>Correct</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.setState({ cardIdx: cardIdx + 1, flipped: false })}>
-            <Text>Incorrect</Text>
-          </TouchableOpacity>
+      <View style={styles.QuizContainer}>
+        <Text style={styles.QuizCounter}>{`${cardIdx + 1}/${questions.length}`}</Text>
+        <View style={styles.QuizContent}>
+          <View style={styles.QuizQuestionAnswer}>
+            <Text style={styles.QuizText}>{flipped ? card.answer : card.question}</Text>
+            <TouchableOpacity onPress={()=>this.setState({ flipped: !flipped })}>
+              <Text style={styles.QuizFlipText}>{flipped ? 'Question' : 'Answer'}</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.QuizButtonsContainer}>
+            <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonCorrect]} onPress={()=>this.setState({ numCorrect: numCorrect + 1, cardIdx: cardIdx + 1, flipped: false })}>
+              <Text style={styles.QuizButtonText}>Correct</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonIncorrect]} onPress={()=>this.setState({ cardIdx: cardIdx + 1, flipped: false })}>
+              <Text style={styles.QuizButtonText}>Incorrect</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
 

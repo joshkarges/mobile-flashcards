@@ -89,6 +89,52 @@ const styles = StyleSheet.create({
   newCardText: {
     fontSize: 30
   },
+  QuizContainer: {
+    flex: 1,
+  },
+  QuizCounter: {
+    margin: 5,
+    fontSize: 24
+  },
+  QuizContent: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  QuizQuestionAnswer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  QuizText: {
+    fontSize: 50,
+    textAlign: 'center',
+  },
+  QuizFlipText: {
+    color: 'red',
+    fontWeight: 'bold'
+  },
+  QuizButtonsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  QuizButton: {
+    padding: 5,
+    margin: 10,
+    borderRadius: 5,
+    width: 200
+  },
+  QuizButtonCorrect: {
+    backgroundColor: 'green'
+  },
+  QuizButtonIncorrect: {
+    backgroundColor: 'red'
+  },
+  QuizButtonText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
   header: {
   },
   headerBack: {
