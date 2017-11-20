@@ -35,7 +35,7 @@ class NewQuestionView extends React.Component {
           get={()=>this.state.answerText}
           placeholder='Answer'/>
         <TouchableOpacity style={styles.submitButton} type='submit' onPress={this.addCardHandler}>
-          <Text style={styles.submitButtonText}>Submit</Text>
+          <Text style={styles.submitButtonText}>Create Card</Text>
         </TouchableOpacity>
       </View>
     );

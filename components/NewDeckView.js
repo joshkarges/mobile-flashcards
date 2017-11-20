@@ -10,10 +10,14 @@ class NewDeckView extends React.Component {
     deckTitleText: null
   }
   addDeckHandler = (evt) => {
-    let str = this.state.deckTitleText;
-    if (!str) return;
-    this.props.navigation.navigate('DeckListView');
-    this.props.addDeck(str);
+    const deckTitle = this.state.deckTitleText;
+    if (!deckTitle) return;
+    this.props.addDeck(deckTitle)
+      .then(()=>{
+        this.setState({ deckTitleText: null });
+        this.props.navigation.navigate('DeckListView');
+        this.props.navigation.navigate('IndividualDeckView', {deckId: deckTitle});
+      });
   }
   render() {
     return (
@@ -25,7 +29,7 @@ class NewDeckView extends React.Component {
           placeholder='Deck Title'
           autoFocus={true}/>
         <TouchableOpacity style={styles.submitButton} type='submit' onPress={this.addDeckHandler}>
-          <Text style={styles.submitButtonText}>Submit</Text>
+          <Text style={styles.submitButtonText}>Create Deck</Text>
         </TouchableOpacity>
       </View>
     );
