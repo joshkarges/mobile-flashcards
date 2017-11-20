@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from '../utils/styles';
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from '../utils/helpers'
 
 class QuizView extends React.Component {
   state = {
@@ -9,10 +13,20 @@ class QuizView extends React.Component {
     flipped: false,
     numCorrect: 0
   }
+  answerQuestion(isCorrect) {
+    const { cardIdx, flipped, numCorrect, finished } = this.state;
+    this.setState({ numCorrect: numCorrect + Number(isCorrect), cardIdx: cardIdx + 1, flipped: false },
+      ()=>{
+        if (this.state.cardIdx >= this.props.questions.length) {
+          clearLocalNotification()
+            .then(setLocalNotification)
+        }
+      });
+  }
   render() {
-    const { cardIdx, flipped, numCorrect } = this.state;
+    const { cardIdx, flipped, numCorrect, finished } = this.state;
     const { questions } = this.props;
-    if (cardIdx >= questions.length) {
+    if (cardIdx >= this.props.questions.length) {
       const percentCorrect = Math.round(100 * numCorrect/questions.length);
       const punctuation = percentCorrect > 50 ? '!' : ' :\\';
       return (
@@ -36,10 +50,10 @@ class QuizView extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={styles.QuizButtonsContainer}>
-            <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonCorrect]} onPress={()=>this.setState({ numCorrect: numCorrect + 1, cardIdx: cardIdx + 1, flipped: false })}>
+            <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonCorrect]} onPress={()=>this.answerQuestion(true)}>
               <Text style={styles.QuizButtonText}>Correct</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonIncorrect]} onPress={()=>this.setState({ cardIdx: cardIdx + 1, flipped: false })}>
+            <TouchableOpacity style={[styles.QuizButton, styles.QuizButtonIncorrect]} onPress={()=>this.answerQuestion(false)}>
               <Text style={styles.QuizButtonText}>Incorrect</Text>
             </TouchableOpacity>
           </View>

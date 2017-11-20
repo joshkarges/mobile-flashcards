@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { addDeck } from '../actions';
 import styles from '../utils/styles';
 import { TextLine } from './primitives';
@@ -21,7 +21,7 @@ class NewDeckView extends React.Component {
   }
   render() {
     return (
-      <View style={styles.newDeckContainer}>
+      <KeyboardAvoidingView behavior='padding' style={styles.newDeckContainer}>
         <Text style={styles.newDeckTitle}>{'What is the title of your new Deck?'}</Text>
         <TextLine
           set={(text)=>this.setState({ deckTitleText: text })}
@@ -31,7 +31,7 @@ class NewDeckView extends React.Component {
         <TouchableOpacity style={styles.submitButton} type='submit' onPress={this.addDeckHandler}>
           <Text style={styles.submitButtonText}>Create Deck</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

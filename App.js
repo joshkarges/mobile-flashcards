@@ -13,6 +13,7 @@ import QuizView from './components/QuizView';
 import NewDeckView from './components/NewDeckView';
 import NewQuestionView from './components/NewQuestionView';
 import styles from './utils/styles';
+import { setLocalNotification } from './utils/helpers';
 
 const DeckTabs = TabNavigator({
   DeckListView: {
@@ -62,6 +63,9 @@ const MainNavigator = StackNavigator({
 });
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={createStore(reducer, applyMiddleware(thunk))}>

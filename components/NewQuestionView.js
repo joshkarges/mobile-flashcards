@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { addCard } from '../actions';
 import styles from '../utils/styles';
 import { TextLine } from './primitives';
@@ -21,7 +21,7 @@ class NewQuestionView extends React.Component {
   }
   render() {
     return (
-      <View style={styles.newCardContainer}>
+      <KeyboardAvoidingView behavior='padding' style={styles.newCardContainer}>
         <Text style={styles.newCardText}>Add New Card</Text>
         <TextLine
           set={(text)=>this.setState({ questionText: text })}
@@ -37,7 +37,7 @@ class NewQuestionView extends React.Component {
         <TouchableOpacity style={styles.submitButton} type='submit' onPress={this.addCardHandler}>
           <Text style={styles.submitButtonText}>Create Card</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

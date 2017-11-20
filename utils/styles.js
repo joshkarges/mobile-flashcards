@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    borderBottomWidth: 1,
     fontSize: 20
   },
   deckListElement: {
